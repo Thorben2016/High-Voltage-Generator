@@ -712,7 +712,7 @@ LCDrealtimeCounterR = 1;
       frequencychange = false;
     }
     if (frequency > 1.00){
-      if (lastvoltageoutR == 0 && voltageoutR == 0) {
+      if (lastvoltageoutR < 20 && voltageoutR < 20) { //if (lastvoltageoutR == 0 && voltageoutR == 0) {
     
       ChangeFlagR = false;
       frequencychange = false;
@@ -722,7 +722,7 @@ LCDrealtimeCounterR = 1;
       }
       }
     if (frequency < 1.00){
-    if (lastvoltageoutR < 50 && voltageoutR < 50) {
+    if (lastvoltageoutR < 50 && voltageoutR < 50) { //if (lastvoltageoutR == 0 && voltageoutR == 0) {
       ChangeFlagR = false;
       frequencychange = false;
       lastfrequencyR = frequencyR;
@@ -829,7 +829,7 @@ LCDrealtimeCounterR = 1;
 
   //--------------- changing voltage when frequency is 0 ----------------------------------
   if (voltagechange == true) {
-    /
+    
     if (FirstLoopCounter2R == 0) {
       FirstLoopFlag2R = true;
     }
@@ -1157,7 +1157,19 @@ LCDrealtimeCounterC = 1;
     if (lastvoltageout == 0 && frequency == 0) {
       frequencychangeC = false;
     }
-    if (lastvoltageout < 50  && voltageout < 50) { 
+    if (frequency > 1.00){
+      if (lastvoltageoutR < 20 && voltageoutR < 20) { //if (lastvoltageoutR == 0 && voltageoutR == 0) {
+    
+     ChangeFlagC = false;
+      frequencychangeC = false;
+      lastfrequency = frequency;
+      lastvoltage = voltage;
+      lastrealvoltage = realvoltage;
+      lastsign = sign;
+      }
+      }
+    if (frequency < 1.00){
+    if (lastvoltageoutR < 50 && voltageoutR < 50) { //if (lastvoltageoutR == 0 && voltageoutR == 0) {
       ChangeFlagC = false;
       frequencychangeC = false;
       lastfrequency = frequency;
@@ -1165,6 +1177,8 @@ LCDrealtimeCounterC = 1;
       lastrealvoltage = realvoltage;
       lastsign = sign;
     }
+  }
+    
   }
 
 
